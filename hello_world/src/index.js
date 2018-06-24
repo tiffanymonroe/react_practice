@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import Hello from './App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+//generates virtual DOM, takes 2 arguments: component, a function that finds the DOM element to append
+ReactDOM.render(
+  <Hello />, //argument 1
+  document.getElementById('root') //argument 2
+)
