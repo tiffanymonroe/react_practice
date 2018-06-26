@@ -15,7 +15,7 @@ class Post extends Component {
     this.state = {body: props.body}
   }
   changeBody(e){
-    let newBody = prompt("Enter text")
+    let newBody = e.target.value
     this.setState({
       body: newBody
     })
@@ -36,7 +36,9 @@ class Post extends Component {
         <p>{this.state.body}</p>
         <h3>Comments:</h3>
         <p><Comment body={this.props.comments[0]} /></p>
-        <button onClick={(e)=>this.changeBody(e)}>Change Body</button>
+        <p>Enter new text: </p>
+        <input onChange={(e)=>this.changeBody(e)}></input>
+
       </div>
     );
   }
