@@ -15,9 +15,9 @@ class Post extends Component {
     this.state = {body: props.body}
   }
   changeBody(e){
-    prompt("Enter text")
+    let newBody = prompt("Enter text")
     this.setState({
-
+      body: newBody
     })
   }
   render() {
