@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import MyList from './MyList';
-import registerServiceWorker from './registerServiceWorker';
+import './index.css';
 
-ReactDOM.render(<MyList />, document.getElementById('root'));
-registerServiceWorker();
+const toDos = ["buy coffee", "make coffee", "drink coffee"]
+
+ReactDOM.render(
+  <MyList theList={toDos} />,
+  document.getElementById('root')
+)
