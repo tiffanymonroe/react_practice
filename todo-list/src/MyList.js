@@ -30,8 +30,13 @@ class MyList extends Component {
 
   addItem(e){
     e.preventDefault()
+    //copy the toDoItemArray in new variable
     let newToDo = this.state.toDoItemArray
+
+    //add newItem to new variable
     newToDo.push(this.state.newItem)
+
+    //set toDoItemArray to new variable and clear newItem
     this.setState({
       toDoItemArray: newToDo,
       newItem: ''
