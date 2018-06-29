@@ -58,13 +58,11 @@ const fruitList = [
 //Fruit Container
 
 class App extends Component {
-  
+
   render() {
     return (
       <div className="App">
-
         <FruitContainer fruits={fruitList} />
-
       </div>
     );
   }
