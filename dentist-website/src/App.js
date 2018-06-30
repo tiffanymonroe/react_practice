@@ -1,14 +1,30 @@
 import React, { Component } from 'react';
-
 import './App.css';
+//components
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
+import Home from './Home'
+import Procedures from './Procedures'
+import Contact from './Contact'
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <h1>Dentist Website</h1>
-        <p>Lorem ipsum Swag chia art party organic. Freegan umami hell of, post-ironic semiotics poke migas snackwave put a bird on it. Beard ramps hashtag twee fashion axe selfies readymade kickstarter. Paleo offal squid butcher. Tofu waistcoat photo booth plaid prism succulents, chartreuse aesthetic pour-over semiotics banh mi mlkshk. Before they sold out squid quinoa, church-key copper mug direct trade authentic retro bicycle rights cloud bread irony af distillery put a bird on it readymade.</p>
-      </div>
+      <Router>
+        <div>
+        <nav id="nav">
+        <Link to="/">Home</Link>
+        <Link to="/procedures">Procedures</Link>
+        <Link to="/contact">Contact</Link>
+        </nav>
+          <Route exact path="/" component={Home} />
+          <Route path="/procedures" component={Procedures} />
+          <Route path="/contact" component={Contact} />
+        </div>
+      </Router>
     );
   }
 }
