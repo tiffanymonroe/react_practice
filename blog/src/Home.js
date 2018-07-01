@@ -20,14 +20,27 @@ class Home extends Component {
         console.log('an error occured', err);
       })
   }
+
   render(){
     let poem = this.state.shakespeare
+    if (this.state.shakespeare){
+      return(
+        <div>
+          <main>
+          <h1>Welcome to Dinosaurs are Awesome</h1>
+          <h3>A Blog from Ross Gellar</h3>
+          <p>{poem}</p>
+          <p>-William Shakespeare</p>
+          </main>
+        </div>
+      )
+    }
     return(
       <div>
         <main>
         <h1>Welcome to Dinosaurs are Awesome</h1>
         <h3>A Blog from Ross Gellar</h3>
-        <p>{poem}</p>
+        <p>Poem loading...</p>
         <p>-William Shakespeare</p>
         </main>
       </div>
