@@ -1,47 +1,54 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-//import Comment component
-import Comment from './Comment.js'
-//import Author component
-import Author from './Author.js'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
-class Post extends Component {
- //set initial state inside constructor
-  constructor(props){
-    super()
-    //state attribute should be called body, value should be props
-    this.state = {body: props.body}
-  }
-  changeBody(e){
-    let newBody = e.target.value
-    this.setState({
-      body: newBody
-    })
-  }
-  render() {
-    let authors = [
-      <Author author={this.props.allAuthors[0]} />,
-      <Author author={this.props.allAuthors[1]} />,
-      <Author author={this.props.allAuthors[2]} />
-    ]
+//import components
+import Home from './Home'
+import About from './About'
+import Blog from './Blog'
+import Food from './Food'
+import Movie from './Movie'
 
-
-
-    return (
-      <div >
-        <h1>{this.props.title}</h1>
-        <p>by {authors}</p>
-        <p>{this.state.body}</p>
-        <h3>Comments:</h3>
-        <p><Comment body={this.props.comments[0]} /></p>
-        <p>Enter new text: </p>
-        <input onChange={(e)=>this.changeBody(e)}></input>
-
-      </div>
-    );
-  }
+const post = {
+  title: "Dinosaurs are awesome",
+  authors: ["Stealthy Stegosaurus", "Tiny T-Rex", "Iguanadon Ivory"],
+  body: "Check out this body property!",
+  comments: ["First!", "Great post", "Hire this author now!"]
 }
 
-export default Post;
+const App = () => (
+
+      <Router>
+      <div>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/about">About moi</Link>
+          <Link to="/blog">My blog</Link>
+          <Link to="/food">Favorite noms</Link>
+          <Link to="/movie">Favorite Movie</Link>
+        </nav>
+        <hr/>
+
+        <Route exact path="/" component={Home}/>
+        <Route path="/about" component={About}/>
+        <Route path="/blog" component={
+              () => (<Blog title={post.title}
+              allAuthors={post.authors}
+              body={post.body}
+              comments={post.comments} />
+        )}/>
+        <Route path="/food" component={Food}/>
+              <Route path="/movie" component={Movie}/>
+      </div>
+      </Router>
+
+)
+
+
+
+export default App
