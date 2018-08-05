@@ -1,27 +1,66 @@
 import React, { Component } from 'react';
 import './App.css';
-import Nav from './Nav';
 
+//components
+import Home from './Home';
+import Reel from './Reel'
+import Branded from './Branded'
+import More from './More'
 
+//React Router
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 
 class App extends Component {
   render() {
     return (
+      <Router>
       <div>
-        
-        <Nav />
+          <div className="pos-f-t">
+            <div className="collapse" id="menu">
+              <div className="bg-light p-4">
+                <div className="navbar-nav">
+                  <Link to="/" className="nav-item btn"><i className="fas fa-home"></i></Link>
+                  <Link to="reel" className="nav-item btn"><i className="fas fa-film"></i></Link>
+                  <Link to="branded" className="nav-item btn"><i className="fas fa-images"></i></Link>
+                  <Link to="more" className="nav-item dropdown btn"><i className="fas fa-chevron-down"></i></Link>
+                </div>
+              </div>
+            </div>
+            <nav className="navbar">
+              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+                <i className="fas fa-bars"></i>
+              </button>
+            </nav>
+          </div>
+
+
+          <nav className="navbar navbar-expand-lg justify-content-center">
+            <div className="navbar-nav">
+              <Link to="/" className="nav-item btn">Home</Link>
+              <Link to="reel" className="nav-item btn">Reel</Link>
+              <Link to="branded" className="nav-item btn">Branded</Link>
+              <Link to="more" className="nav-item dropdown btn">More</Link>
+            </div>
+          </nav>
+
+
+
         <div className="container-fluid">
-          <div className="row justify-content-center">
-            <img src="https://static.wixstatic.com/media/0a14d6_4e5741a5c20ca7fa3d488f3754625393.jpg/v1/fill/w_640,h_320,al_c,q_80,usm_0.66_1.00_0.01/0a14d6_4e5741a5c20ca7fa3d488f3754625393.webp" className="img-fluid"/>
-          </div>
+          <Route exact path="/" component={Home} />
+          <Route path="/reel" component={Reel} />
+          <Route path="/branded" component={Branded} />
+          <Route path="/more" component={More} />
 
-
-          <div className="row">
-
-          </div>
+          <footer className="row justify-content-center"><p>Made with <i className="fas fa-coffee"></i> by <a href="http://tiffanymonroe.com">Tiffany Monroe</a></p></footer>
 
         </div>
+
       </div>
+      </Router>
     );
   }
 }
