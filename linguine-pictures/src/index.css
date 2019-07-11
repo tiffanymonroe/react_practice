@@ -82,7 +82,6 @@ p>a {
 }
 
 p>a:hover {
-  font-weight: bold;
   color: #EF121D;
   text-decoration: none;
 }
